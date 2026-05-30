@@ -37,8 +37,7 @@ public class RefreshToken {
 
     @Builder.Default
     @Column(nullable = false)
-    private Boolean revogado = false;
-
+    private boolean revogado = false;
     @CreationTimestamp
     @Column(name = "criado_em")
     private LocalDateTime criadoEm;
