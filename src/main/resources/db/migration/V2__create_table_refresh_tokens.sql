@@ -1,0 +1,8 @@
+CREATE TABLE refresh_tokens(
+    id BIGSERIAL PRIMARY KEY,
+    token VARCHAR(255) NOT NULL UNIQUE,
+    usuario_id BIGINT NOT NULL REFERENCES usuarios (id) ON DELETE CASCADE,
+    expira_em TIMESTAMP NOT NULL,
+    revogado BOOLEAN NOT NULL DEFAULT FALSE,
+    criado_em TIMESTAMP NOT NULL DEFAULT NOW()
+);

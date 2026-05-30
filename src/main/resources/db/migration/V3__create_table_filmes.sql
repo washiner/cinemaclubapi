@@ -1,0 +1,11 @@
+CREATE TABLE filmes(
+    id BIGSERIAL PRIMARY KEY,
+    titulo VARCHAR(200) NOT NULL,
+    descricao TEXT,
+    genero VARCHAR(50) NOT NULL,
+    ano INTEGER NOT NULL,
+    nota DECIMAL(3,1) NOT NULL,
+    ativo BOOLEAN NOT NULL DEFAULT TRUE,
+    creado_em TIMESTAMP NOT NULL DEFAULT NOW()
+
+);
