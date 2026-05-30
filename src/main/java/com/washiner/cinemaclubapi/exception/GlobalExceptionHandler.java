@@ -2,6 +2,7 @@ package com.washiner.cinemaclubapi.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -56,6 +57,13 @@ public class GlobalExceptionHandler {
     public ProblemDetail handleRefreshTokenInvalido(RefreshTokenInvalidoException ex) {
         return ProblemDetail
                 .forStatusAndDetail(HttpStatus.UNAUTHORIZED, ex.getMessage());
+    }
+
+    // Senha errada → 401 Unauthorized
+    @ExceptionHandler(BadCredentialsException.class)
+    public ProblemDetail handleBadCredentials(BadCredentialsException ex) {
+        return ProblemDetail
+                .forStatusAndDetail(HttpStatus.UNAUTHORIZED, "Email ou senha inválidos");
     }
 
     // Qualquer outro erro → 500 Internal Server Error
